@@ -3,3 +3,4 @@
 	<li>{{$livro->titulo}}</li>
 @endforeach
 </ul>
+{{$livros->render()}}
