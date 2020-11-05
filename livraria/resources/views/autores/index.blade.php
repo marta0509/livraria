@@ -7,4 +7,3 @@
 	</li>
 @endforeach
 </ul>
-{{$autores->render()}}

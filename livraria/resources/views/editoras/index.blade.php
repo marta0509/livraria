@@ -8,4 +8,3 @@
 	</li>
 @endforeach
 </ul>
-{{$editoras->render()}}
