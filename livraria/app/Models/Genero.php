@@ -10,7 +10,7 @@ class Genero extends Model
     use HasFactory;
 
     //indicar qual a chave primaria da tabela livros
-    protected $primaryKey="idg";
+    protected $primaryKey="id_genero";
 
     //esta propriedade não é necessária
     //mas vai ajudar-nos em situações futuras

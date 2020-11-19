@@ -10,7 +10,7 @@ class Editora extends Model
     use HasFactory;
 
     //indicar qual a chave primaria da tabela livros
-    protected $primaryKey="ide";
+    protected $primaryKey="id_editora";
 
     //esta propriedade não é necessária
     //mas vai ajudar-nos em situações futuras

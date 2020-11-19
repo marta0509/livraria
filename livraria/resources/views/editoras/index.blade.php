@@ -2,7 +2,7 @@
 @foreach($editoras as $editora)
 
 	<li>
-		<a href="{{route('editoras.show',['id'=>$editora->ide])}}">
+		<a href="{{route('editoras.show',['id'=>$editora->id_editora])}}">
 			{{$editora->nome}}
 		</a>
 	</li>
