@@ -1,3 +1,3 @@
-Id Livros:{{$edicoes->id_livros}}<br>
-Id Editoras:{{$edicoes->id_editoras}}<br>
-Observações:{{$edicoes->observacao}}
+Id Livros:{{$edicao->id_livro}}<br>
+Id Editoras:{{$edicao->id_editora}}<br>
+Observações:{{$edicao->observacoes}}

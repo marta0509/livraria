@@ -19,13 +19,12 @@ class EdicoesController extends Controller
 
     public function show (Request $request){
         $id_livro = $request->id;
-        $id_editora = $request->id;
+
 
         $edicoes = Edicao::find($id_livro);
-        $edicoes = Edicao::find($id_editora);
-
+        //$edicoes = Edicao::where('id_livro',$idLivro)->where('id_editora',$id_editora)->fist();
 
         return view ('edicoes.show',[
-            'edicao'=>$edicao]);
+            'edicao'=>$edicoes]);
     }
 }
