@@ -23,10 +23,14 @@ class LivrosController extends Controller
     public function show (Request $request){
         $idLivro = $request->id;
 
-          $livro = Livro::findOrFail($idLivro);
+        //$livro = Livro::findOrFail($idLivro);
         //$livro = Livro::find($idLivro);
         //$livro = Livro::where('idl',$idLivro)->fist();
 
+        $livro = Livro::where('id_livro',$idLivro)->with('genero')->first();
+
+         $livro = Livro::where('id_livro',$idLivro)->with('autor')->first();
+        
         return view ('livros.show',[
             'livro'=>$livro]);
     }

@@ -15,4 +15,14 @@ class Livro extends Model
     //esta propriedade não é necessária
     //mas vai ajudar-nos em situações futuras
     protected $table="livros";
+
+    public function genero()
+    {
+    	return $this->belongsTo('App\Models\Genero','id_genero');
+    }
+
+    public function autor()
+    {
+        return $this->belongsTo('App\Models\Autor','id_autor');
+    }
 }

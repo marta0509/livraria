@@ -22,9 +22,11 @@ class AutoresController extends Controller
     public function show (Request $request){
         $idAutor = $request->id;
 
-          $autor = Autor::findOrFail($idAutor);
+        //$autor = Autor::findOrFail($idAutor);
         //$autor = Autor::find($idAutor);
         //$autor = Autor::where('idl',$idAutor)->fist();
+
+        $autor = Autor::where('id_autor',$idAutor)->with('livros')->first();
 
         return view ('autores.show',[
             'autor'=>$autor]);

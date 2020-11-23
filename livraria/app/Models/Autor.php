@@ -15,4 +15,9 @@ class Autor extends Model
     //esta propriedade não é necessária
     //mas vai ajudar-nos em situações futuras
     protected $table="autores";
+
+    public function Livros() 
+    {
+    	return $this->hasMany('App\Models\Livro','id_autor');
+    }
 }

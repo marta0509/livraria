@@ -20,11 +20,13 @@ class GenerosController extends Controller
     }
 
     public function show (Request $request){
-        $idGenero = $request->id;
+        $idGenero = $request->idg;
 
         //$genero = Genero::findOrFail($idGenero);
-          $genero = Genero::find($idGenero);
+        //$genero = Genero::find($idGenero);
         //$genero = Genero::where('idg',$idGenero)->fist();
+
+        $genero = Genero::where('id_genero',$idGenero)->with('livros')->first();
 
         return view ('generos.show',[
             'genero'=>$genero]);

@@ -15,4 +15,9 @@ class Genero extends Model
     //esta propriedade não é necessária
     //mas vai ajudar-nos em situações futuras
     protected $table="generos";
+
+    public function livros() 
+    {
+    	return $this->hasMany('App\Models\Livro','id_genero');
+    }
 }

@@ -1,4 +1,7 @@
-ID:{{$livro->id_livros}}<br>
+<!--ID:{{$livro->id_livros}}<br>
 Título:{{$livro->titulo}}<br>
 Idioma:{{$livro->idioma}}<br>
-PÁGINAS:{{$livro->total_paginas}}
+Páginas:{{$livro->total_paginas}}<br>-->
+@if(isset($livro->genero->designacao))
+	Genero:{{$livro->genero->designacao}}
+@endif
