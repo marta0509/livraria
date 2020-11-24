@@ -1,18 +1,29 @@
-ID:{{$livro->id_livro}}<br>
-Título:{{$livro->titulo}}<br>
-Idioma:{{$livro->idioma}}<br>
-Páginas:{{$livro->total_paginas}}<br>
-@if(count($livro->autores)>0)
+<b>ID:</b>{{$livro->id_livro}}<br>
+<b>Título:</b>{{$livro->titulo}}<br>
+<b>Idioma:</b>{{$livro->idioma}}<br>
+<b>Páginas:</b>{{$livro->total_paginas}}<br>
 
-@foreach($livro->autores as $autor)
-	Autor:{{$autor->nome}}<br>
-@endforeach
+@if(count($livro->autores)>0)
+	<b>Autores:</b> <br>
+	@foreach($livro->autores as $autor)
+		{{$autor->nome}}<br>
+	@endforeach
 @else
-<div class="alert alert-danger" role="alert">
-	Sem autor definido
-</div>
+	<div class="alert alert-danger" role="alert">
+		Sem autor definido
+	</div>
 @endif
 
 @if(isset($livro->genero->designacao))
-	Genero:{{$livro->genero->designacao}}
+	<b>Genero:</b>{{$livro->genero->designacao}}<br>
+@endif
+
+@if(count($livro->editoras)>0)
+@foreach($livro->editoras as $editora)
+	<b>Editora:</b>{{$editora->nome}}<br>
+@endforeach
+@else
+<div class="alert alert-danger" role="alert">
+	Sem editora definido
+</div>
 @endif

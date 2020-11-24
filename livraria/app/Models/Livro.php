@@ -34,4 +34,13 @@ class Livro extends Model
             'id_autor'//fk de autores que relaciona com Autor
         )->withTimestamps();
     }
+
+    public function editoras(){
+        return $this->belongsToMany(
+            'App\Models\Editora',
+            'editora_livros',//nome da tabela pivot
+            'id_livro',//fk de autores livros que relaciona com Livro
+            'id_editora'//fk de autores que relaciona com Editora
+        )->withTimestamps();
+    }
 }

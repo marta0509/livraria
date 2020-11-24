@@ -1,6 +1,6 @@
-ID:{{$genero->id_genero}}<br>
-Designação:{{$genero->designacao}}<br>
-Observações:{{$genero->observacoes}}
+<b>ID:</b>{{$genero->id_genero}}<br>
+<b>Designação:</b>{{$genero->designacao}}<br>
+<b>Observações:</b>{{$genero->observacoes}}
 @foreach($genero->livros as $livro)
-	<h3>{{$livro->titulo}}</h3>
+	<h5><b>Titulo do livro:</b>{{$livro->titulo}}</h5>
 @endforeach

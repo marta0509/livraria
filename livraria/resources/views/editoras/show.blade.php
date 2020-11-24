@@ -1,5 +1,5 @@
-ID:{{$editora->id_editoras 
+<b>ID:</b>{{$editora->id_editoras 
 }}<br>
-Nome:{{$editora->nome}}<br>
-Morada:{{$editora->morada}}<br>
-Observações:{{$editora->observacao}}
+<b>Nome:</b>{{$editora->nome}}<br>
+<b>Morada:</b>{{$editora->morada}}<br>
+<b>Observações:</b>{{$editora->observacao}}
