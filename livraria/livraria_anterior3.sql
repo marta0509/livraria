@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 14-Dez-2020 às 11:08
--- Versão do servidor: 10.1.38-MariaDB
--- versão do PHP: 7.3.2
+-- Tempo de geração: 24-Nov-2020 às 14:57
+-- Versão do servidor: 10.4.11-MariaDB
+-- versão do PHP: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `livraria`
+-- Banco de dados: `livraria`
 --
 
 -- --------------------------------------------------------
@@ -102,17 +101,6 @@ CREATE TABLE `edicoes` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `edicoes`
---
-
-INSERT INTO `edicoes` (`id_livro`, `id_editora`, `data`, `observacoes`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, '2020-12-13 00:00:00', NULL, NULL, NULL, NULL),
-(2, 2, '2020-12-15 00:00:00', NULL, NULL, NULL, NULL),
-(3, 3, '2020-12-05 00:00:00', NULL, NULL, NULL, NULL),
-(4, 4, '2020-11-03 00:00:00', NULL, NULL, NULL, NULL),
-(5, 5, '2020-12-02 00:00:00', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -215,97 +203,78 @@ INSERT INTO `livros` (`id_livro`, `titulo`, `idioma`, `total_paginas`, `data_edi
 (15, 'Contribuições para a discussão de um modelo de Governo Eletrónico Local para Angola', 'Português', NULL, NULL, '9789899933200', NULL, NULL, 1, 13, NULL, NULL, NULL, NULL);
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `autores`
+-- Índices para tabela `autores`
 --
 ALTER TABLE `autores`
   ADD PRIMARY KEY (`id_autor`);
 
 --
--- Indexes for table `autores_livros`
+-- Índices para tabela `autores_livros`
 --
 ALTER TABLE `autores_livros`
   ADD PRIMARY KEY (`id_al`);
 
 --
--- Indexes for table `edicoes`
+-- Índices para tabela `edicoes`
 --
 ALTER TABLE `edicoes`
-  ADD PRIMARY KEY (`id_livro`,`id_editora`),
-  ADD KEY `id_editora` (`id_editora`);
+  ADD PRIMARY KEY (`id_livro`,`id_editora`);
 
 --
--- Indexes for table `editoras`
+-- Índices para tabela `editoras`
 --
 ALTER TABLE `editoras`
   ADD PRIMARY KEY (`id_editora`);
 
 --
--- Indexes for table `generos`
+-- Índices para tabela `generos`
 --
 ALTER TABLE `generos`
   ADD PRIMARY KEY (`id_genero`);
 
 --
--- Indexes for table `livros`
+-- Índices para tabela `livros`
 --
 ALTER TABLE `livros`
-  ADD PRIMARY KEY (`id_livro`),
-  ADD KEY `id_genero` (`id_genero`,`id_autor`);
+  ADD PRIMARY KEY (`id_livro`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `autores`
+-- AUTO_INCREMENT de tabela `autores`
 --
 ALTER TABLE `autores`
   MODIFY `id_autor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `autores_livros`
+-- AUTO_INCREMENT de tabela `autores_livros`
 --
 ALTER TABLE `autores_livros`
   MODIFY `id_al` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `editoras`
+-- AUTO_INCREMENT de tabela `editoras`
 --
 ALTER TABLE `editoras`
   MODIFY `id_editora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `generos`
+-- AUTO_INCREMENT de tabela `generos`
 --
 ALTER TABLE `generos`
   MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `livros`
+-- AUTO_INCREMENT de tabela `livros`
 --
 ALTER TABLE `livros`
   MODIFY `id_livro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- Constraints for dumped tables
---
-
---
--- Limitadores para a tabela `edicoes`
---
-ALTER TABLE `edicoes`
-  ADD CONSTRAINT `edicoes_ibfk_1` FOREIGN KEY (`id_editora`) REFERENCES `editoras` (`id_editora`),
-  ADD CONSTRAINT `edicoes_ibfk_2` FOREIGN KEY (`id_livro`) REFERENCES `livros` (`id_livro`);
-
---
--- Limitadores para a tabela `livros`
---
-ALTER TABLE `livros`
-  ADD CONSTRAINT `livros_ibfk_1` FOREIGN KEY (`id_genero`) REFERENCES `generos` (`id_genero`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

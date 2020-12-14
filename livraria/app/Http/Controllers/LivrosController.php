@@ -36,4 +36,9 @@ class LivrosController extends Controller
         return view ('livros.show',[
             'livro'=>$livro]);
     }
+
+    public function create()
+    {
+        return view ('livros.create');
+    }
 }

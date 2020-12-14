@@ -37,3 +37,5 @@ Route::get('/editoras/{id}/show','App\Http\Controllers\EditorasController@show')
 Route::get('/autores/{id}/show','App\Http\Controllers\AutoresController@show')->name('autores.show');
 
 Route::get('/edicoes/{id}/show','App\Http\Controllers\EdicoesController@show')->name('edicoes.show');
+
+Route::get('/livros/create','App\Http\Controllers\LivrosController@create')->name('livros.create');

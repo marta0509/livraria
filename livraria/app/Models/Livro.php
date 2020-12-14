@@ -43,4 +43,17 @@ class Livro extends Model
             'id_editora'//fk de autores que relaciona com Editora
         )->withTimestamps();
     }
+
+    protected $fillable=[
+        'titulo',
+        'idioma',
+        'total_paginas',
+        'data_edicao',
+        'isbn',
+        'observacoes',
+        'imagem_capa',
+        'id_genero',
+        'id_autor',
+        'sinopse'
+    ];
 }
