@@ -20,7 +20,7 @@ class GenerosController extends Controller
     }
 
     public function show (Request $request){
-        $idGenero = $request->idg;
+        $idGenero = $request->id;
 
         //$genero = Genero::findOrFail($idGenero);
         //$genero = Genero::find($idGenero);
