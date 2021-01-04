@@ -17,7 +17,6 @@ class Genero extends Model
     protected $table="generos";
 
     public $fillable=[
-        'id_genero',
         'designacao',
         'observacoes'
     ];

@@ -47,7 +47,7 @@ class GenerosController extends Controller
         $genero=Genero::create($novoGenero);
 
         return redirect()->route('generos.show',[
-            'id'=>$genero->id_generos
+            'id'=>$genero->id_genero
         ]);
     }
 }
