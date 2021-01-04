@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Nov-2020 às 14:57
--- Versão do servidor: 10.4.11-MariaDB
--- versão do PHP: 7.4.5
+-- Generation Time: 20-Nov-2020 às 11:55
+-- Versão do servidor: 10.1.38-MariaDB
+-- versão do PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `livraria`
+-- Database: `livraria`
 --
 
 -- --------------------------------------------------------
@@ -60,35 +61,6 @@ INSERT INTO `autores` (`id_autor`, `nome`, `nacionalidade`, `data_nascimento`, `
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `autores_livros`
---
-
-CREATE TABLE `autores_livros` (
-  `id_al` int(11) NOT NULL,
-  `id_autor` int(11) NOT NULL,
-  `id_livro` int(11) NOT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `autores_livros`
---
-
-INSERT INTO `autores_livros` (`id_al`, `id_autor`, `id_livro`, `updated_at`, `created_at`) VALUES
-(1, 1, 1, NULL, NULL),
-(2, 3, 1, NULL, NULL),
-(3, 6, 1, NULL, NULL),
-(4, 8, 1, NULL, NULL),
-(5, 2, 2, NULL, NULL),
-(6, 4, 2, NULL, NULL),
-(7, 8, 2, NULL, NULL),
-(8, 1, 2, NULL, NULL),
-(9, 1, 3, NULL, NULL);
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `edicoes`
 --
 
@@ -101,6 +73,14 @@ CREATE TABLE `edicoes` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `edicoes`
+--
+
+INSERT INTO `edicoes` (`id_livro`, `id_editora`, `data`, `observacoes`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, '2020-11-15 00:00:00', 'zzzzzz', NULL, NULL, NULL),
+(2, 2, '2020-11-02 00:00:00', 'xxxxxxxxxx', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -203,78 +183,78 @@ INSERT INTO `livros` (`id_livro`, `titulo`, `idioma`, `total_paginas`, `data_edi
 (15, 'Contribuições para a discussão de um modelo de Governo Eletrónico Local para Angola', 'Português', NULL, NULL, '9789899933200', NULL, NULL, 1, 13, NULL, NULL, NULL, NULL);
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `autores`
+-- Indexes for table `autores`
 --
 ALTER TABLE `autores`
   ADD PRIMARY KEY (`id_autor`);
 
 --
--- Índices para tabela `autores_livros`
---
-ALTER TABLE `autores_livros`
-  ADD PRIMARY KEY (`id_al`);
-
---
--- Índices para tabela `edicoes`
+-- Indexes for table `edicoes`
 --
 ALTER TABLE `edicoes`
-  ADD PRIMARY KEY (`id_livro`,`id_editora`);
+  ADD PRIMARY KEY (`id_livro`,`id_editora`),
+  ADD KEY `id_editora` (`id_editora`);
 
 --
--- Índices para tabela `editoras`
+-- Indexes for table `editoras`
 --
 ALTER TABLE `editoras`
   ADD PRIMARY KEY (`id_editora`);
 
 --
--- Índices para tabela `generos`
+-- Indexes for table `generos`
 --
 ALTER TABLE `generos`
   ADD PRIMARY KEY (`id_genero`);
 
 --
--- Índices para tabela `livros`
+-- Indexes for table `livros`
 --
 ALTER TABLE `livros`
   ADD PRIMARY KEY (`id_livro`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `autores`
+-- AUTO_INCREMENT for table `autores`
 --
 ALTER TABLE `autores`
   MODIFY `id_autor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT de tabela `autores_livros`
---
-ALTER TABLE `autores_livros`
-  MODIFY `id_al` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT de tabela `editoras`
+-- AUTO_INCREMENT for table `editoras`
 --
 ALTER TABLE `editoras`
   MODIFY `id_editora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de tabela `generos`
+-- AUTO_INCREMENT for table `generos`
 --
 ALTER TABLE `generos`
   MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de tabela `livros`
+-- AUTO_INCREMENT for table `livros`
 --
 ALTER TABLE `livros`
   MODIFY `id_livro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `edicoes`
+--
+ALTER TABLE `edicoes`
+  ADD CONSTRAINT `edicoes_ibfk_1` FOREIGN KEY (`id_editora`) REFERENCES `editoras` (`id_editora`),
+  ADD CONSTRAINT `edicoes_ibfk_2` FOREIGN KEY (`id_livro`) REFERENCES `livros` (`id_livro`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

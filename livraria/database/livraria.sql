@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 14-Dez-2020 às 18:11
+-- Generation Time: 04-Jan-2021 às 12:27
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -56,7 +56,8 @@ INSERT INTO `autores` (`id_autor`, `nome`, `nacionalidade`, `data_nascimento`, `
 (10, 'José Dias Coelho', 'Portugal', NULL, NULL, NULL, NULL, NULL),
 (11, 'Paula Moura', 'Portugal', NULL, NULL, NULL, NULL, NULL),
 (12, 'Luis Alves', 'Portugal', NULL, 'Lindo', NULL, '2020-11-27 16:09:18', NULL),
-(13, 'Pereira Alfredo', 'Angola', NULL, NULL, NULL, NULL, NULL);
+(13, 'Pereira Alfredo', 'Angola', NULL, NULL, NULL, NULL, NULL),
+(14, 'antonio', 'portugues', '1999-10-04 00:00:00', NULL, '2021-01-04 09:44:20', '2021-01-04 09:44:20', NULL);
 
 -- --------------------------------------------------------
 
@@ -158,15 +159,16 @@ INSERT INTO `editoras` (`id_editora`, `nome`, `morada`, `observacoes`, `created_
 (5, 'Sílabo', '', NULL, NULL, NULL, NULL),
 (6, 'Green Lines Instituto', '', NULL, NULL, NULL, NULL),
 (7, 'Lambert Academic Publishing', '', NULL, NULL, NULL, NULL),
-(8, 'Porto editora', 'Porto', 'Portugal', NULL, '2020-11-27 16:03:52', NULL);
+(8, 'Porto editora', 'Porto', 'Portugal', NULL, '2020-11-27 16:03:52', NULL),
+(9, 'editets', 'avenida s.joao', NULL, '2021-01-04 10:15:25', '2021-01-04 10:15:25', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `editoras_livros`
+-- Estrutura da tabela `editora_livros`
 --
 
-CREATE TABLE `editoras_livros` (
+CREATE TABLE `editora_livros` (
   `id_editora` int(11) NOT NULL,
   `id_livro` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -175,10 +177,10 @@ CREATE TABLE `editoras_livros` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `editoras_livros`
+-- Extraindo dados da tabela `editora_livros`
 --
 
-INSERT INTO `editoras_livros` (`id_editora`, `id_livro`, `created_at`, `updated_at`, `deleted_at`) VALUES
+INSERT INTO `editora_livros` (`id_editora`, `id_livro`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 2, NULL, NULL, NULL),
 (2, 1, NULL, NULL, NULL),
 (2, 12, '2020-12-04 16:43:52', '2020-12-04 16:43:52', NULL),
@@ -210,7 +212,8 @@ INSERT INTO `generos` (`id_genero`, `designacao`, `observacoes`, `created_at`, `
 (2, 'Direito Civil portugues', 'Portugal', NULL, '2020-11-27 15:58:53', NULL),
 (3, 'Culinária', NULL, NULL, NULL, NULL),
 (4, 'Romance', NULL, NULL, NULL, NULL),
-(5, 'Policial e Thriller', NULL, NULL, NULL, NULL);
+(5, 'Policial e Thriller', NULL, NULL, NULL, NULL),
+(6, 'Ficção', 'este livro é de ficção', '2021-01-04 10:56:04', '2021-01-04 10:56:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -272,7 +275,8 @@ INSERT INTO `livros` (`id_livro`, `titulo`, `idioma`, `total_paginas`, `data_edi
 (9, 'Gestão da Informação na Biblioteca Escolar', 'Portugal', NULL, NULL, '9789722314916', NULL, NULL, 1, 9, NULL, NULL, NULL, NULL, 0),
 (10, 'A virtual environment to share knowledge', 'Portugal', NULL, NULL, '9781351729901', NULL, NULL, 2, 4, NULL, NULL, NULL, NULL, 0),
 (11, 'Ciência da Informação: contributos para o seu estudo', 'Português', NULL, NULL, '9789896430900', NULL, NULL, 1, 4, NULL, NULL, NULL, NULL, 0),
-(12, 'Repensar a Sociedade da Informação e do Conhecimento no Início do Século XXI', 'Portugal', NULL, NULL, '9789726186953', NULL, NULL, 3, 4, NULL, NULL, NULL, NULL, 0);
+(12, 'Repensar a Sociedade da Informação e do Conhecimento no Início do Século XXI', 'Portugal', NULL, NULL, '9789726186953', NULL, NULL, 3, 4, NULL, NULL, NULL, NULL, 0),
+(21, 'ola', 'ingles', 125, '1996-06-04 00:00:00', '1234567891234', 'olaaaaa', NULL, 1, 3, 'ghnjutgduyhfgc', '2021-01-04 08:56:56', '2021-01-04 08:56:56', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -367,7 +371,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `autores`
 --
 ALTER TABLE `autores`
-  MODIFY `id_autor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_autor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `autores_livros`
@@ -379,13 +383,13 @@ ALTER TABLE `autores_livros`
 -- AUTO_INCREMENT for table `editoras`
 --
 ALTER TABLE `editoras`
-  MODIFY `id_editora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_editora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `generos`
 --
 ALTER TABLE `generos`
-  MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `likes`
@@ -397,7 +401,7 @@ ALTER TABLE `likes`
 -- AUTO_INCREMENT for table `livros`
 --
 ALTER TABLE `livros`
-  MODIFY `id_livro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_livro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `users`
