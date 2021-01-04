@@ -16,6 +16,13 @@ class Editora extends Model
     //mas vai ajudar-nos em situações futuras
     protected $table="editoras";
 
+    protected $fillable=[
+        'id_editora',
+        'nome',
+        'morada',
+        'observacoes'
+    ];
+
     public function livros() 
     {
     	return $this->hasMany('App\Models\Livro','id_editora');

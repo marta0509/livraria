@@ -1,15 +1,45 @@
-<form action="{{route('livros.create')}}" method="post">
+<form action="{{route('livros.store')}}" method="post">
 	@csrf
-	Título: <input type="text" name="titulo"><br>
-	Idioma: <input type="text" name="idioma"><br>
-	Total Páginas: <input type="text" name="total_paginas"><br>
-	Data Edições: <input type="text" name="data_edicao"><br>
-	ISBN: <input type="text" name="isbn"><br>
-	Observações: <textarea name="observacoes"></textarea><br>
-	Imagem Capa: <input type="text" name="imagem_capa"><br>
-	Género: <input type="text" name="id_genero"><br>
-	Autor: <input type="text" name="id_autor"><br>
-	Sinopse: <textarea name="sinopse"></textarea><br>
+	Título: <input type="text" name="titulo" value="{{old('titulo')}}"><br>
+	@if($errors->has('titulo'))
+		Deverá indicar um titulo correto<br>
+	@endif
+	Idioma: <input type="text" name="idioma" value="{{old('idioma')}}"><br>
+	@if($errors->has('idioma'))
+		Deverá indicar um idioma correto<br>
+	@endif
+	Total Páginas: <input type="text" name="total_paginas" value="{{old('total_paginas')}}"><br>
+	@if($errors->has('total_paginas'))
+		Deverá indicar um total_paginas correto<br>
+	@endif
+	Data Edições: <input type="text" name="data_edicao" value="{{old('data_edicao')}}"><br>
+	@if($errors->has('data_edicao'))
+		Deverá indicar um data_edição correto<br>
+	@endif
+	ISBN: <input type="text" name="isbn" value="{{old('isbn')}}"><br>
+	@if($errors->has('isbn'))
+		Deverá indicar um ISBN correto (13 caracteres)<br>
+	@endif
+	Observações: <textarea name="observacoes" value="{{old('observacoes')}}"></textarea><br>
+	@if($errors->has('observacoes'))
+		Deverá indicar um observações correto<br>
+	@endif
+	Imagem Capa: <input type="text" name="imagem_capa" value="{{old('imagem_capa')}}"><br>
+	@if($errors->has('imagem_capa'))
+		Deverá indicar uma imagem capa correta<br>
+	@endif
+	Género: <input type="text" name="id_genero" value="{{old('id_genero')}}"><br>
+	@if($errors->has('id_genero'))
+		Deverá indicar um id_genero correto<br>
+	@endif
+	Autor: <input type="text" name="id_autor" value="{{old('id_autor')}}"><br>
+	@if($errors->has('id_autor'))
+		Deverá indicar um id_autor correto<br>
+	@endif
+	Sinopse: <textarea name="sinopse" value="{{old('sinopse')}}"></textarea><br>
+	@if($errors->has('sinopse'))
+		Deverá indicar um sinopse correto<br>
+	@endif
 
 	<input type="submit" name="enviar">
 </form>

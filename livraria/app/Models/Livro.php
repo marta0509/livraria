@@ -15,7 +15,20 @@ class Livro extends Model
     //esta propriedade não é necessária
     //mas vai ajudar-nos em situações futuras
     protected $table="livros";
-
+    
+     protected $fillable=[
+            'titulo',
+            'idioma',
+            'total_paginas',
+            'data_edicao',
+            'isbn',
+            'observacoes',
+            'imagem_capa',
+            'id_genero',
+            'id_autor',
+            'sinopse'
+        ];
+        
     public function genero()
     {
     	return $this->belongsTo('App\Models\Genero','id_genero');
@@ -44,16 +57,5 @@ class Livro extends Model
         )->withTimestamps();
     }
 
-    protected $fillable=[
-        'titulo',
-        'idioma',
-        'total_paginas',
-        'data_edicao',
-        'isbn',
-        'observacoes',
-        'imagem_capa',
-        'id_genero',
-        'id_autor',
-        'sinopse'
-    ];
+   
 }

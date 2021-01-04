@@ -31,4 +31,23 @@ class GenerosController extends Controller
         return view ('generos.show',[
             'genero'=>$genero]);
     }
+
+    public function create()
+    {
+        return view('generos.create');
+    }
+
+    public function store (Request $request)
+    {
+        $novoGenero=$request->validate([
+            'designacao'=>['required','min:3','max:100'],
+            'observacoes'=>['required','min:3','max:100'],
+        ]);
+
+        $genero=Genero::create($novoGenero);
+
+        return redirect()->route('generos.show',[
+            'id'=>$genero->id_generos
+        ]);
+    }
 }
