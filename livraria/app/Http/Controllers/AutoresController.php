@@ -50,7 +50,31 @@ class AutoresController extends Controller
     $autor=Autor::create($novoAutor);
 
     return redirect()->route('autores.show',[
-        'id'=>$autor->id_autor
-    ]);
+        'id'=>$autor->id_autor]);
+    }
+
+    public function edit (Request $request)
+    {
+        $idAutor=$request->id;
+        $autor=Autor::where('id_autor',$idAutor)->first();
+
+        return view('autores.edit',['autor'=>$autor]);
+    }
+
+    public function update (Request $request)
+    {
+        $idAutor=$request->id;
+        $autor=Autor::findOrFail($idAutor);
+
+        $atualizarAutor=$request->validate([
+            'nome'=>['required','min:5','max:100'],
+            'nacionalidade'=>['required','min:3','max:50'],
+            'data_nascimento'=>['nullable','date'],
+            'fotografia'=>['nullable'],
+        ]);
+
+        $autor->update($atualizarAutor);
+
+        return redirect()->route('autores.show',['id'=>$autor->id_autor]);
     }
 }

@@ -2,6 +2,7 @@
 <b>Título:</b>{{$livro->titulo}}<br>
 <b>Idioma:</b>{{$livro->idioma}}<br>
 <b>Páginas:</b>{{$livro->total_paginas}}<br>
+<b>ISBN:</b>{{$livro->isbn}}<br>
 
 @if(count($livro->autores)>0)
 	<b>Autores:</b> <br>
@@ -27,3 +28,4 @@
 	Sem editora definido
 </div>
 @endif
+<a href="{{route('livros.edit',['id'=>$livro->id_livro])}}">Editar</a>

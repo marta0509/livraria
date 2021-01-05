@@ -6,4 +6,4 @@
 @foreach($autor->livros as $livro)
 <h5><b>Titulo do livro:</b>{{$livro->titulo}}</h5>
 @endforeach
-
+<a href="{{route('autores.edit',['id'=>$autor->id_autor])}}">Editar</a>

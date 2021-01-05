@@ -38,6 +38,8 @@ Route::get('/autores/{id}/show','App\Http\Controllers\AutoresController@show')->
 
 Route::get('/edicoes/{id}/show','App\Http\Controllers\EdicoesController@show')->name('edicoes.show');
 
+//  ***********routes para criar um registo **********
+
 Route::get('/livros/create','App\Http\Controllers\LivrosController@create')->name('livros.create');
 
 Route::post('/livros','App\Http\Controllers\LivrosController@store')->name('livros.store');
@@ -53,3 +55,21 @@ Route::post('/editoras','App\Http\Controllers\EditorasController@store')->name('
 Route::get('/generos/create','App\Http\Controllers\GenerosController@create')->name('generos.create');
 
 Route::post('/generos','App\Http\Controllers\GenerosController@store')->name('generos.store');
+
+//  ***********routes para editar um registo **********
+
+Route::get('/livros/{id}/edit','App\Http\Controllers\LivrosController@edit')->name('livros.edit');
+
+Route::patch('/livros','App\Http\Controllers\LivrosController@update')->name('livros.update');
+
+Route::get('/autores/{id}/edit','App\Http\Controllers\AutoresController@edit')->name('autores.edit');
+
+Route::patch('/autores','App\Http\Controllers\AutoresController@update')->name('autores.update');
+
+Route::get('/editoras/{id}/edit','App\Http\Controllers\EditorasController@edit')->name('editoras.edit');
+
+Route::patch('/editoras','App\Http\Controllers\EditorasController@update')->name('editoras.update');
+
+Route::get('/generos/{id}/edit','App\Http\Controllers\GenerosController@edit')->name('generos.edit');
+
+Route::patch('/generos','App\Http\Controllers\GenerosController@update')->name('generos.update');
