@@ -72,4 +72,20 @@ class EditorasController extends Controller
 
         return redirect()->route('editoras.show',['id'=>$editora->id_editora]);
     }
+
+    public function delete (Request $request)
+    {
+        $idEditora=$request->id;
+        $editora=Editora::where('id_editora',$idEditora)->first();
+        return view ('editoras.delete',['editora'=>$editora]);
+    }
+
+    public function destroy (Request $request)
+    {
+        $idEditora=$request->id;
+        $editora=Editora::findOrFail($idEditora);
+        $editora->delete();
+
+        return  redirect()->route('editoras.index')->with('mensagem','Editora eliminada');
+    }
 }

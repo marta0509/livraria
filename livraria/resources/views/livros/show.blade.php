@@ -29,3 +29,4 @@
 </div>
 @endif
 <a href="{{route('livros.edit',['id'=>$livro->id_livro])}}">Editar</a>
+<a href="{{route('livros.delete',['id'=>$livro->id_livro])}}">Eliminar</a>

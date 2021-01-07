@@ -7,3 +7,4 @@
 <h5><b>Titulo do livro:</b>{{$livro->titulo}}</h5>
 @endforeach
 <a href="{{route('autores.edit',['id'=>$autor->id_autor])}}">Editar</a>
+<a href="{{route('autores.delete',['id'=>$autor->id_autor])}}">Eliminar</a>

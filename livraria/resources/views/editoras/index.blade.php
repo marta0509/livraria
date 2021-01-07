@@ -8,3 +8,8 @@
 	</li>
 @endforeach
 </ul>
+@if(session()->has('mensagem'))
+		<div class="alert alert-danger" role="alert">
+			{{session('mensagem')}}
+		</div>
+@endif

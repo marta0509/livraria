@@ -6,6 +6,9 @@
 		Deverá ter no minimo 3 letras.
 	@endif
 	Morada<input type="text" name="morada" value="{{$editora->morada}}"><br>
+	@if($errors->has('morada'))
+		Deverá ter no minimo 5 letras.
+	@endif
 	Observações<textarea name="observacoes">{{$editora->observacoes}}</textarea><br>
 	<input type="submit" name="enviar">
 </form>

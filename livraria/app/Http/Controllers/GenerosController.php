@@ -73,4 +73,20 @@ class GenerosController extends Controller
 
         return redirect()->route('generos.show',['id'=>$genero->id_genero]);
     }
+
+    public function delete (Request $request)
+    {
+        $idGenero=$request->id;
+        $genero=Genero::where('id_genero',$idGenero)->first();
+        return view ('generos.delete',['genero'=>$genero]);
+    }
+
+    public function destroy (Request $request)
+    {
+        $idGenero=$request->id;
+        $genero=Genero::findOrFail($idGenero);
+        $genero->delete();
+
+        return  redirect()->route('generos.index')->with('mensagem','Genero eliminado');
+    }
 }
