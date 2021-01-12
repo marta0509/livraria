@@ -47,10 +47,10 @@ class AutoresController extends Controller
         ]);
     
 
-    $autor=Autor::create($novoAutor);
+        $autor=Autor::create($novoAutor);
 
-    return redirect()->route('autores.show',[
-        'id'=>$autor->id_autor]);
+        return redirect()->route('autores.show',[
+            'id'=>$autor->id_autor]);
     }
 
     public function edit (Request $request)

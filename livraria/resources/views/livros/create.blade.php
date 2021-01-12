@@ -28,14 +28,26 @@
 	@if($errors->has('imagem_capa'))
 		Deverá indicar uma imagem capa correta<br>
 	@endif
-	Género: <input type="text" name="id_genero" value="{{old('id_genero')}}"><br>
+	Género: <select name="id_genero">
+				@foreach($generos as $genero)
+					<option value="{{$genero->id_genero}}">{{$genero->designacao}}</option>
+				@endforeach
+			</select>
+			<br>
+	<!--<input type="text" name="id_genero" value="{{old('id_genero')}}"><br>
 	@if($errors->has('id_genero'))
 		Deverá indicar um id_genero correto<br>
-	@endif
-	Autor: <input type="text" name="id_autor" value="{{old('id_autor')}}"><br>
+	@endif-->
+	Autor(es): <select name="id_autor[]" multiple="multiple">
+				@foreach($autores as $autor)
+					<option value="{{$autor->id_autor}}">{{$autor->nome}}</option>
+				@endforeach
+			</select>
+			<br>
+	<!--<input type="text" name="id_autor" value="{{old('id_autor')}}"><br>
 	@if($errors->has('id_autor'))
 		Deverá indicar um id_autor correto<br>
-	@endif
+	@endif-->
 	Sinopse: <textarea name="sinopse" value="{{old('sinopse')}}"></textarea><br>
 	@if($errors->has('sinopse'))
 		Deverá indicar um sinopse correto<br>

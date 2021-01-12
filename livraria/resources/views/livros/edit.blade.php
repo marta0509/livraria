@@ -16,7 +16,31 @@
 	@endif
 
 	Observações: <textarea name="observacoes" value="{{$livro->observacoes}}"></textarea><br>
-	Género: <input type="text" name="id_genero" value="{{$livro->id_genero}}"><br>
+	Género: <select name="id_genero">
+				@foreach($generos as $genero)
+					<option value="{{$genero->id_genero}}" 
+						@if($genero->id_genero==$livro->id_genero)selected 
+						@endif >{{$genero->designacao}}</option>
+				@endforeach
+			</select>
+			@if ($errors->has('id_genero'))
+				Deverá indicar um ISBN correto (13 caracteres)<br>
+			@endif
+			<br>
+	<!--<input type="text" name="id_genero" value="{{$livro->id_genero}}"><br>-->
 	Sinopse: <textarea name="sinopse" >{{$livro->sinopse}}</textarea><br>
+	Autor(es):<select name="id_autor[]" multiple="multiple">
+				@foreach($autores as $autor)
+					<option 
+					value="{{$autor->id_autor}}"
+					@if(in_array($autor->id_autor,$autoresLivro))selected @endif
+					>
+						{{$autor->nome}}</option>
+				@endforeach
+			</select>
+			@if ($errors->has('id_autor'))
+				Deverá indicar um ISBN correto (13 caracteres)<br>
+			@endif
+			<br>
 	<input type="submit" name="enviar">
 </form>
