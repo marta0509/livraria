@@ -24,11 +24,12 @@
 				@endforeach
 			</select>
 			@if ($errors->has('id_genero'))
-				Deverá indicar um ISBN correto (13 caracteres)<br>
+				Deverá indicar um genero<br>
 			@endif
 			<br>
 	<!--<input type="text" name="id_genero" value="{{$livro->id_genero}}"><br>-->
 	Sinopse: <textarea name="sinopse" >{{$livro->sinopse}}</textarea><br>
+	
 	Autor(es):<select name="id_autor[]" multiple="multiple">
 				@foreach($autores as $autor)
 					<option 
@@ -39,7 +40,21 @@
 				@endforeach
 			</select>
 			@if ($errors->has('id_autor'))
-				Deverá indicar um ISBN correto (13 caracteres)<br>
+				Deverá indicar um autor<br>
+			@endif
+			<br>
+
+	Editora: <select name="id_editora[]" multiple="multiple">
+				@foreach($editoras as $editora)
+					<option 
+					value="{{$editora->id_editora}}"
+					@if(in_array($editora->id_editora,$editorasLivro))selected @endif
+					>
+						{{$editora->nome}}</option>
+				@endforeach
+			</select>
+			@if ($errors->has('id_editora'))
+				Deverá indicar uma editora <br>
 			@endif
 			<br>
 	<input type="submit" name="enviar">

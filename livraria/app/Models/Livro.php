@@ -39,6 +39,7 @@ class Livro extends Model
         return $this->belongsTo('App\Models\Autor','id_autor');
     }
 
+
     public function autores(){
         return $this->belongsToMany(
             'App\Models\Autor',

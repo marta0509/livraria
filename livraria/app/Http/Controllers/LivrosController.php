@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Livro;
 use App\Models\Genero;
 use App\Models\Autor;
+use App\Models\Editora;
 
 class LivrosController extends Controller
 {
@@ -43,9 +44,11 @@ class LivrosController extends Controller
     {
         $generos=Genero::all();
         $autores=Autor::all();
+        $editoras=Editora::all();
         return view ('livros.create',[
             'generos'=>$generos,
-            'autores'=>$autores]);
+            'autores'=>$autores,
+            'editoras'=>$editoras]);
     }
 
     public function store(Request $request)
@@ -65,8 +68,10 @@ class LivrosController extends Controller
         ]);
 
         $autores=$request->id_autor;
+        $editoras=$request->id_editora;
         $livro= Livro::create($novoLivro);
         $livro->autores()->attach($autores);
+        $livro->editoras()->attach($editoras);
 
         return redirect()->route('livros.show',[
             'id'=>$livro->id_livro
@@ -78,18 +83,28 @@ class LivrosController extends Controller
         $idLivro=$request->id;
         $generos=Genero::all();
         $autores=Autor::all();
-        $livro=Livro::where('id_livro',$idLivro)->with('autores')->first();
+        $editoras=Editora::all();
+        $livro=Livro::where('id_livro',$idLivro)->with('autores','editoras')->first();
         $autoresLivro=[];
+       
         //obter id_autor dos autores deste livro
         foreach ($livro->autores as $autor) 
-        {
+        { 
             $autoresLivro[]=$autor->id_autor;
+        } 
+
+        $editorasLivro=[];
+        foreach ($livro->editoras as $editora) 
+        { 
+            $editorasLivro[]=$editora->id_editora;
         }
 
         return view('livros.edit', ['livro'=>$livro,
             'generos'=>$generos,
             'autores'=>$autores,
-            'autoresLivro'=>$autoresLivro]);
+            'editoras'=>$editoras,
+            'autoresLivro'=>$autoresLivro,
+            'editorasLivro'=>$editorasLivro]);
     }
 
     public function update (Request $request)
@@ -113,6 +128,7 @@ class LivrosController extends Controller
         $autores=$request->id_autor;
         $livro->update($atualizarLivro);
         $livro->autores()->sync($autores);
+        $livro->editoras()->sync($editoras);
 
         return redirect()->route('livros.show',['id'=>$livro->id_livro]);
     }

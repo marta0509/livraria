@@ -52,6 +52,12 @@
 	@if($errors->has('sinopse'))
 		Deverá indicar um sinopse correto<br>
 	@endif
+	Editora(s): <select name="id_editora">
+				@foreach($editoras as $editora)
+					<option value="{{$editora->id_editora}}">{{$editora->nome}}</option>
+				@endforeach
+			</select>
+			<br>
 
 	<input type="submit" name="enviar">
 </form>
