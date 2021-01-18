@@ -20,14 +20,19 @@
 @endif
 
 @if(count($livro->editoras)>0)
-@foreach($livro->editoras as $editora)
-	<b>Editora:</b>{{$editora->nome}}<br>
-@endforeach
+	<b>Editora:</b>
+	@foreach($livro->editoras as $editora)
+		{{$editora->nome}}<br>
+	@endforeach
 @else
 <div class="alert alert-danger" role="alert">
 	Sem editora definido
 </div>
 @endif
 
-<a href="{{route('livros.edit',['id'=>$livro->id_livro])}}">Editar</a>
-<a href="{{route('livros.delete',['id'=>$livro->id_livro])}}">Eliminar</a>
+@if(auth()->check())
+	<a href="{{route('livros.edit',['id'=>$livro->id_livro])}}">Editar</a>
+	<a href="{{route('livros.delete',['id'=>$livro->id_livro])}}">Eliminar</a>
+@else                        
+	<a href="{{route('home')}}">Login</a>
+@endif

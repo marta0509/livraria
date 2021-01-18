@@ -94,6 +94,7 @@ class LivrosController extends Controller
         } 
 
         $editorasLivro=[];
+        //$editorasLivro=$livro->editoras->pluck('id_editora')->toArray();
         foreach ($livro->editoras as $editora) 
         { 
             $editorasLivro[]=$editora->id_editora;
@@ -126,9 +127,11 @@ class LivrosController extends Controller
         ]);
 
         $autores=$request->id_autor;
+        $editoras=$request->id_editora;
         $livro->update($atualizarLivro);
         $livro->autores()->sync($autores);
         $livro->editoras()->sync($editoras);
+
 
         return redirect()->route('livros.show',['id'=>$livro->id_livro]);
     }

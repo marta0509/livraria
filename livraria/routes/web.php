@@ -91,3 +91,22 @@ Route::delete('/editoras','App\Http\Controllers\EditorasController@destroy')->na
 Route::get('/autores/{id}/delete','App\Http\Controllers\AutoresController@delete')->name('autores.delete');
 
 Route::delete('/autores','App\Http\Controllers\AutoresController@destroy')->name('autores.destroy');
+
+/**********login********/
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/livros/{id}/edit','App\Http\Controllers\LivrosController@edit')->name('livros.edit')->middleware('auth');
+
+Route::get('/livros/{id}/update','App\Http\Controllers\LivrosController@update')->name('livros.update')->middleware('auth');
+
+Route::get('/livros/create','App\Http\Controllers\LivrosController@create')->name('livros.create')->middleware('auth');
+
+Route::get('/livros/','App\Http\Controllers\LivrosController@store')->name('livros.store')->middleware('auth');
+
+Route::get('/livros/{id}/delete','App\Http\Controllers\LivrosController@delete')->name('livros.delete')->middleware('auth');
+
+Route::get('/livros/{id}/destroy','App\Http\Controllers\LivrosController@destroy')->name('livros.destroy')->middleware('auth');
+

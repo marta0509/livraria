@@ -1,3 +1,10 @@
+@if(auth()->check())
+	<h3>Login efetuado por:</h3>
+	<b>Id:</b>{{Auth::user()->id}}<br>
+	<b>Email:</b>{{Auth::user()->email}}<br>
+	<b>Name:</b>{{Auth::user()->name}}<br>
+@endif
+<hr>
 <ul>
 @foreach($generos as $genero)
 	<li>
