@@ -18,4 +18,8 @@
 		<div class="alert alert-danger" role="alert">
 			{{session('mensagem')}}
 		</div>
-	@endif
+@endif
+
+@if(auth()->check())
+	<a href="{{route('autores.create')}}">Adicionar</a>
+@endif

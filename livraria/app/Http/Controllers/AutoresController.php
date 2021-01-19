@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Autor;
 
+use Auth;
+
 class AutoresController extends Controller
 {
     //

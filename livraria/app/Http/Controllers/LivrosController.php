@@ -8,6 +8,8 @@ use App\Models\Genero;
 use App\Models\Autor;
 use App\Models\Editora;
 
+use Auth;
+
 class LivrosController extends Controller
 {
     //
@@ -25,6 +27,7 @@ class LivrosController extends Controller
 
     public function show (Request $request){
         $idLivro = $request->id;
+        $utilizador="";
 
         //$livro = Livro::findOrFail($idLivro);
         //$livro = Livro::find($idLivro);
@@ -36,6 +39,8 @@ class LivrosController extends Controller
         
         $livro = Livro::where('id_livro',$idLivro)->with(['genero','autores','autor','editoras'])->first();
 
+
+        
         return view ('livros.show',[
             'livro'=>$livro]);
     }
@@ -66,16 +71,23 @@ class LivrosController extends Controller
             'sinopse'=>['nullable','min:3','max:255'],
            
         ]);
-
+        if (Auth::check()) 
+       {
+           $userAtual=Auth::user()->id;
+           $livro['id_user']=$userAtual;
+          
+       }
         $autores=$request->id_autor;
         $editoras=$request->id_editora;
         $livro= Livro::create($novoLivro);
         $livro->autores()->attach($autores);
         $livro->editoras()->attach($editoras);
 
+
         return redirect()->route('livros.show',[
             'id'=>$livro->id_livro
-        ]);
+            ]);
+        
     }
 
     public function edit (Request $request)

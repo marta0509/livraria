@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Edicao;
 
+use Auth;
+
 class EdicoesController extends Controller
 {
     //

@@ -44,10 +44,7 @@
 				@endforeach
 			</select>
 			<br>
-	<!--<input type="text" name="id_autor" value="{{old('id_autor')}}"><br>
-	@if($errors->has('id_autor'))
-		Deverá indicar um id_autor correto<br>
-	@endif-->
+	
 	Sinopse: <textarea name="sinopse" value="{{old('sinopse')}}"></textarea><br>
 	@if($errors->has('sinopse'))
 		Deverá indicar um sinopse correto<br>

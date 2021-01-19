@@ -19,3 +19,7 @@
 		{{session('mensagem')}}
 	</div>
 @endif
+
+@if(auth()->check())
+	<a href="{{route('generos.create')}}">Adicionar</a>
+@endif

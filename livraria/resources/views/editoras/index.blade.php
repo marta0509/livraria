@@ -20,3 +20,7 @@
 			{{session('mensagem')}}
 		</div>
 @endif
+
+@if(auth()->check())
+	<a href="{{route('editoras.create')}}">Adicionar</a>
+@endif
